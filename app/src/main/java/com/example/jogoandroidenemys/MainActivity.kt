@@ -28,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,7 +42,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JogoAndroidEnemysTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    TelaMain(modifier = Modifier.padding(innerPadding))
+//                    TelaMain(modifier = Modifier.padding(innerPadding))
+                    TelaGameOver(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -122,8 +124,7 @@ fun TelaMain(modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.Bottom
-
+            verticalArrangement = Arrangement.Bottom,
         ) {
             AndroidEnemy(
                 modifier = Modifier
@@ -138,7 +139,8 @@ fun TelaMain(modifier: Modifier = Modifier) {
                     .fillMaxWidth(),
                 text = "Press Start",
                 color = Color.White,
-                fontSize = 32.sp
+                fontSize = 32.sp,
+                textAlign = TextAlign.Center
             )
         }
     }
@@ -146,7 +148,45 @@ fun TelaMain(modifier: Modifier = Modifier) {
 
 @Composable
 fun TelaGameOver(modifier: Modifier = Modifier) {
-    Box() { }
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.Black),
+        contentAlignment = Alignment.Center
+    ){
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            AndroidEnemy(
+                modifier = Modifier,
+                color = Color.Green
+            )
+            AndroidEnemy(
+                modifier = Modifier,
+                color = Color.Blue
+            )
+            AndroidEnemy(
+                modifier = Modifier,
+                color = Color.Red
+            )
+            AndroidEnemy(
+                modifier = Modifier,
+                color = Color.Yellow
+            )
+            AndroidEnemy(
+                modifier = Modifier,
+                color = Color.Green
+            )
+        }
+        Text(
+            color = Color.White,
+            text = "Game Over",
+            fontSize = 76.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
 }
 
 @Composable
