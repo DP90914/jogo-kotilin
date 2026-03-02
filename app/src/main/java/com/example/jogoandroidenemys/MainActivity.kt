@@ -1,8 +1,5 @@
 package com.example.jogoandroidenemys
 
-import android.R.attr.bottom
-import android.R.attr.contentDescription
-import android.R.attr.text
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,10 +10,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
@@ -25,12 +20,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jogoandroidenemys.ui.theme.JogoAndroidEnemysTheme
@@ -42,8 +35,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             JogoAndroidEnemysTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    TelaMain(modifier = Modifier.padding(innerPadding))
-                    TelaGameOver(modifier = Modifier.padding(innerPadding))
+                    TelaMain(modifier = Modifier.padding(innerPadding))
+//                    TelaGameOver(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -70,8 +63,7 @@ fun TelaMain(modifier: Modifier = Modifier) {
                     color = Color.White
                 )
                 Row(
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
                         text = "Lives: ",
@@ -125,16 +117,15 @@ fun TelaMain(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AndroidEnemy(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally),
+                modifier = Modifier,
                 color = Color.White
             )
             Text(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .background(Color.Gray)
+                    .background(Color(0x48FFFFFF))
                     .padding(15.dp)
                     .fillMaxWidth(),
                 text = "Press Start",
@@ -184,7 +175,7 @@ fun TelaGameOver(modifier: Modifier = Modifier) {
             color = Color.White,
             text = "Game Over",
             fontSize = 76.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.SemiBold
         )
     }
 }
